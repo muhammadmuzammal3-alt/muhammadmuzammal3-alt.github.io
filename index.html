@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Muhammad Muzammal · .NET Engineer</title>
+<meta name="description" content="Software Engineer with 5 years of C#/.NET experience building secure, multi-tenant healthcare SaaS: Keycloak SSO, Azure Service Bus, production reliability and AI-assisted engineering with Claude Code.">
+<meta property="og:title" content="Muhammad Muzammal · .NET Engineer">
+<meta property="og:description" content="C#/.NET, ASP.NET Core, Azure, SQL Server. Identity & secure healthcare APIs. AI-native development with Claude Code and MCP.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231f5f8b'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' font-weight='700' fill='white' text-anchor='middle'%3EMM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --paper: #f5f7f9;
+  --sheet: #ffffff;
+  --ink: #16212e;
+  --muted: #566475;
+  --rule: #dbe2ea;
+  --accent: #1f5f8b;
+  --accent-ink: #ffffff;
+  --accent-soft: #e6eff6;
+  --chip: #eef2f6;
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-body: "Public Sans", "Segoe UI", Roboto, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", Consolas, "Courier New", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0f151c; --sheet: #151d26; --ink: #e5ebf1; --muted: #9aa8b7;
+    --rule: #2a3542; --accent: #7cb6df; --accent-ink: #0f151c; --accent-soft: #1b2b3a; --chip: #1d2733;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0f151c; --sheet: #151d26; --ink: #e5ebf1; --muted: #9aa8b7;
+  --rule: #2a3542; --accent: #7cb6df; --accent-ink: #0f151c; --accent-soft: #1b2b3a; --chip: #1d2733;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+}
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.wrap { max-width: 1040px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+/* Top bar */
+.bar { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule); }
+.bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 56px; }
+.brand { font-family: var(--font-display); font-weight: 700; font-size: 18px; color: var(--ink); text-decoration: none; white-space: nowrap; }
+.nav { display: flex; align-items: center; gap: 4px 18px; flex-wrap: wrap; justify-content: flex-end; font-size: 14px; }
+.nav a { color: var(--muted); text-decoration: none; }
+.nav a:hover { color: var(--ink); }
+.theme-btn { font: 500 13px var(--font-mono); color: var(--muted); background: transparent; border: 1px solid var(--rule); border-radius: 4px; padding: 4px 8px; cursor: pointer; }
+
+/* Hero */
+.hero { padding: clamp(40px, 8vw, 88px) 0 clamp(32px, 5vw, 56px); border-bottom: 1px solid var(--rule); }
+.eyebrow { font: 500 13px var(--font-mono); color: var(--accent); letter-spacing: 0.04em; margin: 0 0 14px; }
+h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(36px, 7vw, 64px); line-height: 1.02; margin: 0; text-wrap: balance; }
+.lede { font-size: clamp(17px, 2.2vw, 20px); color: var(--muted); max-width: 62ch; margin: 18px 0 0; }
+.lede strong { color: var(--ink); font-weight: 600; }
+.cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; font: 600 14px var(--font-body); text-decoration: none; border-radius: 5px; padding: 10px 16px; border: 1px solid var(--rule); color: var(--ink); background: var(--sheet); }
+.btn:hover { border-color: var(--accent); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn svg { width: 16px; height: 16px; flex: none; }
+.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 40px; border-block: 1px solid var(--rule); }
+.facts div { padding: 16px 18px; border-left: 1px solid var(--rule); min-width: 0; }
+.facts div:first-child { border-left: 0; padding-left: 0; }
+.facts b { display: block; font-family: var(--font-display); font-size: 24px; line-height: 1.15; }
+.facts small { display: block; margin-top: 4px; color: var(--muted); font-size: 13px; line-height: 1.4; }
+
+/* Sections */
+section.block { padding: clamp(44px, 7vw, 72px) 0; border-bottom: 1px solid var(--rule); }
+h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(26px, 4vw, 34px); line-height: 1.15; margin: 0 0 8px; }
+.sub { color: var(--muted); margin: 0 0 32px; max-width: 64ch; }
+h3 { margin: 0; font-size: 18px; line-height: 1.3; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.tags span { font: 500 12px var(--font-mono); background: var(--chip); border-radius: 3px; padding: 3px 7px; }
+
+/* Case studies */
+.cases { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.case { background: var(--sheet); border: 1px solid var(--rule); border-radius: 8px; padding: 22px 22px 20px; display: flex; flex-direction: column; min-width: 0; }
+.case.wide { grid-column: 1 / -1; background: var(--accent-soft); border-color: transparent; }
+.case .kicker { font: 500 12px var(--font-mono); color: var(--accent); letter-spacing: 0.04em; text-transform: uppercase; margin: 0 0 8px; }
+.case p { margin: 10px 0 0; color: var(--muted); }
+.case ul { margin: 12px 0 0; padding-left: 18px; display: grid; gap: 6px; }
+.case li::marker { color: var(--accent); }
+.case .tags { margin-top: auto; padding-top: 16px; }
+.case.wide ul { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; }
+
+/* Repos */
+.repos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.repo { display: block; text-decoration: none; color: var(--ink); background: var(--sheet); border: 1px solid var(--rule); border-radius: 8px; padding: 20px 22px; }
+.repo:hover { border-color: var(--accent); }
+.repo .path { font: 500 13px var(--font-mono); color: var(--accent); overflow-wrap: anywhere; }
+.repo p { margin: 8px 0 0; color: var(--muted); font-size: 15px; }
+
+/* Experience timeline */
+.timeline { display: grid; gap: 0; }
+.role { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 8px 28px; padding: 20px 0; border-top: 1px solid var(--rule); }
+.role:first-child { border-top: 0; padding-top: 0; }
+.when { font: 500 13px var(--font-mono); color: var(--muted); padding-top: 3px; }
+.org { color: var(--muted); font-weight: 500; }
+.role p { margin: 6px 0 0; color: var(--muted); }
+
+/* Skills */
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 22px 28px; }
+.skills h3 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.skills .tags { margin-top: 8px; }
+
+/* Education + contact */
+.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 40px; }
+.list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.list b { display: block; }
+.list span { color: var(--muted); font-size: 15px; }
+.medal { color: var(--accent); font-weight: 600; }
+.contact { padding: clamp(44px, 7vw, 72px) 0 32px; }
+.contact .cta { margin-top: 20px; }
+footer { padding: 24px 0 40px; color: var(--muted); font-size: 13px; }
+
+@media (max-width: 820px) {
+  .cases, .repos, .two { grid-template-columns: minmax(0, 1fr); }
+  .case.wide ul { grid-template-columns: minmax(0, 1fr); }
+  .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .facts div:nth-child(3) { border-left: 0; padding-left: 0; }
+  .facts div:nth-child(n+3) { border-top: 1px solid var(--rule); }
+  .role { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .nav .hide-sm { display: none; }
+}
+@media (max-width: 440px) {
+  .facts { grid-template-columns: minmax(0, 1fr); }
+  .facts div { border-left: 0; padding-left: 0; }
+  .facts div + div { border-top: 1px solid var(--rule); }
+  .btn { flex: 1 1 auto; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#top">Muhammad Muzammal</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#github" class="hide-sm">GitHub</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills" class="hide-sm">Skills</a>
+      <a href="#contact">Contact</a>
+      <button class="theme-btn" id="themeBtn" type="button" aria-label="Toggle colour theme">theme</button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Software Engineer · C# / .NET · Lahore, Pakistan</p>
+      <h1>I build secure .NET platforms for healthcare, and the AI tooling that ships them safely.</h1>
+      <p class="lede"><strong>5 years of hands-on C# and .NET</strong>, over 4 of them on a multi-tenant, HIPAA-regulated US healthcare SaaS. I lead identity work (Keycloak SSO and a zero-downtime migration off legacy auth), event-driven integrations on Azure, and root-cause analysis of production incidents.</p>
+      <div class="cta">
+        <a class="btn primary" href="Muhammad_Muzammal_CV.pdf" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+          Download CV
+        </a>
+        <a class="btn" href="https://www.linkedin.com/in/muhammadmuzammalgoldmedalist" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/muhammadmuzammal3-alt" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="mailto:muhammadmuzammal3@gmail.com">Email me</a>
+      </div>
+      <div class="facts">
+        <div><b>5 years</b><small>C#, .NET and ASP.NET Core in production</small></div>
+        <div><b>4+ years</b><small>on a multi-tenant healthcare SaaS platform</small></div>
+        <div><b>Zero downtime</b><small>tenant-by-tenant migration to Keycloak SSO</small></div>
+        <div><b>Gold Medalist</b><small>Master of Computer Science, UMT</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="work">
+    <div class="wrap">
+      <h2>Selected work</h2>
+      <p class="sub">Production systems I designed or led at iCareManager, a US healthcare management platform used by care facilities. Client code is private, so these are written as short case studies.</p>
+
+      <div class="cases">
+        <article class="case">
+          <p class="kicker">Identity &amp; SSO</p>
+          <h3>Keycloak platform and a zero-downtime auth migration</h3>
+          <p>Moving every tenant off a legacy login system without a maintenance window.</p>
+          <ul>
+            <li>Built a custom <b>Keycloak Admin SDK</b> in .NET: user lifecycle, multi-tenancy, MFA and lockout, impersonation and audit-tracked force logout.</li>
+            <li>Designed <b>dual-path auth middleware</b> so each facility could switch to Keycloak independently, with the old path still serving the rest.</li>
+            <li>Hardened session hand-off with <b>single-use, server-side nonces</b> instead of tokens in URLs.</li>
+          </ul>
+          <div class="tags"><span>ASP.NET Core</span><span>Keycloak</span><span>OAuth 2.0</span><span>OIDC</span><span>MFA</span></div>
+        </article>
+
+        <article class="case">
+          <p class="kicker">Event-driven integration</p>
+          <h3>Staff sync on Azure Service Bus</h3>
+          <p>Keeping identity, HR and downstream apps consistent as staff are hired, changed or terminated.</p>
+          <ul>
+            <li>Topic fan-out to multiple subscribers with <b>MediatR</b> routing and PeekLock delivery.</li>
+            <li>Dead-letter and retry handling, plus a <b>parallel consumer</b> so large backlogs clear quickly.</li>
+            <li>Sped up identity sync with a targeted functional index.</li>
+          </ul>
+          <div class="tags"><span>Azure Service Bus</span><span>MediatR</span><span>.NET</span><span>PostgreSQL</span></div>
+        </article>
+
+        <article class="case">
+          <p class="kicker">Production reliability</p>
+          <h3>Root-cause analysis of production incidents</h3>
+          <p>Finding why the API stalled, then shipping the fix and the write-up.</p>
+          <ul>
+            <li>Traced incidents with <b>Datadog APM</b>, SQL Server Query Store and code reading.</li>
+            <li>Typical causes: thread-pool starvation from sync-over-async code, recursion in an ORM merge path, and DB CPU saturation from unindexed queries.</li>
+            <li>Fixed a 504 in MFA reset by removing a per-user loop across large organizations.</li>
+          </ul>
+          <div class="tags"><span>Datadog</span><span>SQL Server</span><span>Query Store</span><span>async/await</span></div>
+        </article>
+
+        <article class="case">
+          <p class="kicker">Product modules</p>
+          <h3>Healthcare features, end to end</h3>
+          <p>Full-stack modules that care facilities use every day.</p>
+          <ul>
+            <li><b>Staff Attendance Management</b>: real-time monitoring, automated reporting and HR integration.</li>
+            <li><b>Providers module</b>: registration, credentials and service tracking on clean architecture.</li>
+            <li><b>Training Management</b> and <b>eMAR</b> (medication records) features with EF Core; unit tests with NUnit and Moq.</li>
+          </ul>
+          <div class="tags"><span>ASP.NET Core Web API</span><span>Angular</span><span>EF Core</span><span>SignalR</span></div>
+        </article>
+
+        <article class="case wide">
+          <p class="kicker">AI-assisted engineering · Claude Code</p>
+          <h3>Guardrails that make AI-written code reviewable, tested and measured</h3>
+          <p>I use AI coding agents every day, so I built the controls around them.</p>
+          <ul>
+            <li><b>Policy hooks</b>: approval gates before production changes, automated review on high-risk code, blocks on database writes and leaked secrets.</li>
+            <li><b>Custom agent skills</b> for repeatable work: deployments, incident investigations and pull-request review.</li>
+            <li><b>MCP servers</b> with scoped, approval-gated access to code search and browser automation in test environments.</li>
+            <li>An <b>LLM evaluation harness</b> that replays real agent sessions and flags regressions on every model or config change.</li>
+            <li><b>Scheduled agents</b> that draft Jira fix proposals, digest Datadog issues and write stand-ups.</li>
+            <li>A <b>Playwright</b> regression suite for SSO and session flows across the web apps.</li>
+          </ul>
+          <div class="tags"><span>Claude Code</span><span>MCP</span><span>AI agents</span><span>LLM evaluation</span><span>Playwright</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="github">
+    <div class="wrap">
+      <h2>On GitHub</h2>
+      <p class="sub">Public .NET projects you can read end to end.</p>
+      <div class="repos">
+        <a class="repo" href="https://github.com/muhammadmuzammal3-alt/CommonFoundation" target="_blank" rel="noopener">
+          <span class="path">muhammadmuzammal3-alt / CommonFoundation</span>
+          <h3 style="margin-top:8px">Microservice platform with an API gateway</h3>
+          <p>.NET 5 microservices behind an API gateway with a React admin app: hardware, service points, users and privileges, transactions and dynamic reporting.</p>
+          <div class="tags"><span>.NET 5</span><span>Microservices</span><span>API Gateway</span><span>React</span></div>
+        </a>
+        <a class="repo" href="https://github.com/muhammadmuzammal3-alt/KiskControl" target="_blank" rel="noopener">
+          <span class="path">muhammadmuzammal3-alt / KiskControl</span>
+          <h3 style="margin-top:8px">Self-service kiosk control system</h3>
+          <p>ASP.NET Core REST API with a device-communication layer and a mock device backend, plus a touchscreen operator UI for coin, banknote and printer peripherals.</p>
+          <div class="tags"><span>.NET 6</span><span>ASP.NET Core</span><span>REST API</span><span>Hardware I/O</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="experience">
+    <div class="wrap">
+      <h2>Experience</h2>
+      <p class="sub">5 years of professional C# and .NET, since September 2021.</p>
+      <div class="timeline">
+        <div class="role">
+          <span class="when">Nov 2023 – Present</span>
+          <div>
+            <h3>Software Engineer <span class="org">· iCareManager (US healthcare SaaS)</span></h3>
+            <p>Identity and SSO, event-driven integration on Azure, production reliability and AI-assisted engineering. Mentor junior developers and run code reviews.</p>
+          </div>
+        </div>
+        <div class="role">
+          <span class="when">Sep 2022 – Nov 2023</span>
+          <div>
+            <h3>Associate Software Engineer <span class="org">· iCareManager</span></h3>
+            <p>Full-stack ASP.NET Core (.NET 5/6) and Angular 10. Training Management and eMAR features with EF Core and SQL Server.</p>
+          </div>
+        </div>
+        <div class="role">
+          <span class="when">Feb 2022 – Aug 2022</span>
+          <div>
+            <h3>Associate Software Engineer <span class="org">· HazelSoft</span></h3>
+            <p>Document Management System on ASP.NET Core Web API with versioning, permissions and workflows; background scheduling with Quartz.NET.</p>
+          </div>
+        </div>
+        <div class="role">
+          <span class="when">Sep 2021 – Jan 2022</span>
+          <div>
+            <h3>Associate Software Engineer <span class="org">· Cyber Space</span></h3>
+            <p>Multi-provider social sign-in for a marketplace platform, and a financial-data API wrapper built with clean architecture and the Mediator pattern.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="skills">
+    <div class="wrap">
+      <h2>Skills</h2>
+      <p class="sub">What I use in production, grouped by area.</p>
+      <div class="skills">
+        <div><h3>Backend</h3><div class="tags"><span>C#</span><span>.NET 6–10</span><span>ASP.NET Core</span><span>Web API</span><span>EF Core</span><span>MediatR</span><span>Clean Architecture</span><span>DDD</span><span>Quartz.NET</span></div></div>
+        <div><h3>Identity &amp; security</h3><div class="tags"><span>Keycloak</span><span>OAuth 2.0</span><span>OpenID Connect</span><span>SSO</span><span>MFA</span><span>OWASP</span><span>HIPAA</span></div></div>
+        <div><h3>Cloud &amp; data</h3><div class="tags"><span>Azure</span><span>Service Bus</span><span>Key Vault</span><span>Dapr</span><span>Docker</span><span>Kubernetes</span><span>SQL Server</span><span>PostgreSQL</span></div></div>
+        <div><h3>Frontend &amp; quality</h3><div class="tags"><span>Angular</span><span>AngularJS</span><span>SignalR</span><span>Playwright</span><span>NUnit</span><span>Moq</span><span>Datadog</span></div></div>
+        <div><h3>AI engineering</h3><div class="tags"><span>Claude Code</span><span>MCP</span><span>AI agents</span><span>LLM evaluation</span><span>AI code review</span><span>Prompt &amp; context engineering</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="education">
+    <div class="wrap two">
+      <div>
+        <h2>Education</h2>
+        <ul class="list" style="margin-top:20px">
+          <li><b>Master of Computer Science</b><span>University of Management and Technology (UMT) · 2019 – 2021 · CGPA 3.84/4 · <span class="medal">Gold Medalist</span></span></li>
+          <li><b>Associate Degree, Computer Science</b><span>Government College University, Faisalabad · 2016 – 2018 · CGPA 3.84/4</span></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Certifications</h2>
+        <ul class="list" style="margin-top:20px">
+          <li><b>DevOps Practices &amp; MLOps</b><span>Dice Analytics · 2025 · Docker, Swarm, Kubernetes</span></li>
+          <li><b>C#, SQL, ASP.NET MVC</b><span>Aptech Pakistan · 2019</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <h2>Let's talk</h2>
+      <p class="sub" style="margin-bottom:0">Open to remote roles and relocation within the GCC. The fastest way to reach me is email.</p>
+      <div class="cta">
+        <a class="btn primary" href="mailto:muhammadmuzammal3@gmail.com">muhammadmuzammal3@gmail.com</a>
+        <a class="btn" href="https://www.linkedin.com/in/muhammadmuzammalgoldmedalist" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="Muhammad_Muzammal_CV.pdf" download>Download CV (PDF)</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Muhammad Muzammal · Built as a static page, hosted on GitHub Pages.</div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById('themeBtn');
+  function current() {
+    var t = root.getAttribute('data-theme');
+    if (t) return t;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch (e) {}
+  function label() { btn.textContent = current() === 'dark' ? 'light' : 'dark'; }
+  label();
+  btn.addEventListener('click', function () {
+    var next = current() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+    label();
+  });
+})();
+</script>
+</body>
+</html>
